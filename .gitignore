@@ -1,0 +1,11 @@
+# Generated exports (regenerate from .scad source)
+projects/*/exports/*
+!projects/*/exports/.gitkeep
+
+# OpenSCAD editor backup/cache files
+*.scad~
+*.echo
+.OpenSCAD/
+
+# OS cruft
+.DS_Store
