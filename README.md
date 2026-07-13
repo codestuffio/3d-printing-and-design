@@ -9,6 +9,7 @@ projects/<name>/
   <name>.scad       # source, parametric where possible
   README.md         # print settings: layer height, infill, orientation, supports, material
   exports/          # generated .stl / .3mf (gitignored, regenerate from source)
+  you can also all things like screenshots of rendered files, or the finished stl files of each part
 
 libraries/           # shared OpenSCAD libraries (e.g. BOSL2), added as git submodules
 ```
