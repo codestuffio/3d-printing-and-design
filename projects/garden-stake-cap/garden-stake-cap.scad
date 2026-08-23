@@ -24,9 +24,28 @@ tie_hole_inset    = 5;     // distance from disc edge to hole center
 // keep the cap from seating fully when pressed on.
 vent_hole_diameter = 1.5;
 
+// ---- Gussets ----
+// Triangular ribs bracing the disc against the sleeve so string tension
+// doesn't snap the disc off at that joint. One sits in each gap between
+// tie holes; the 45-degree slope keeps them self-supporting when printed
+// disc-down/sleeve-up (see project README).
+gusset_count     = tie_hole_count;
+gusset_size      = 9;   // vertical drop and horizontal reach of each rib
+gusset_thickness = 2;   // tangential thickness of each rib
+
 module garden_stake_cap() {
     socket_id = stake_diameter + fit_clearance;
     socket_od = socket_id + 2 * socket_wall;
+
+    module gusset() {
+        rotate([90, 0, 0])
+            linear_extrude(height = gusset_thickness, center = true)
+                polygon(points = [
+                    [socket_od / 2, socket_depth - gusset_size],
+                    [socket_od / 2, socket_depth],
+                    [socket_od / 2 + gusset_size, socket_depth]
+                ]);
+    }
 
     difference() {
         union() {
@@ -35,6 +54,10 @@ module garden_stake_cap() {
             // top disc / cap
             translate([0, 0, socket_depth])
                 cylinder(h = disc_thickness, d = disc_diameter);
+            // bracing ribs, offset into the gaps between tie holes
+            for (i = [0 : gusset_count - 1])
+                rotate([0, 0, i * 360 / gusset_count + 180 / tie_hole_count])
+                    gusset();
         }
 
         // blind bore for the stake (stops short of the top of the disc)

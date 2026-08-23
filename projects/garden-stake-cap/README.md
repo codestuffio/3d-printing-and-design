@@ -26,4 +26,8 @@ holes around the rim for connecting plant support string.
 
 - Includes a small vent hole through the disc into the (blind) stake
   socket so trapped air doesn't stop the cap from seating fully.
-- 6 tie holes (3.5 mm) evenly spaced around the rim by default.
+- 8 tie holes (3.5 mm) evenly spaced around the rim by default.
+- 8 triangular gussets brace the disc to the sleeve, one in each gap
+  between tie holes, so string tension doesn't snap the disc off at that
+  joint. They're sloped at 45° so they stay self-supporting in the
+  disc-down/sleeve-up print orientation above.
