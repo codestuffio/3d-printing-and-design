@@ -1,6 +1,4 @@
-// Subaru visor mount, reconstructed from SubaruVisorMount.STL.
-// Millimeters. Native CSG throughout; no imported mesh or external library.
-// Default is a measured reconstruction, NOT a physically validated replacement.
+// Subaru visor mount
 
 /* [Mounting plate] */
 mount_spacing = 34.798;
@@ -8,12 +6,10 @@ mount_y = 28.45728;
 front_corner_y = 11.43;
 plate_corner_radius = 11.43;
 plate_thickness = 7.62;
-// Large lower edge round in the supplied STL; zero gives a full flat footprint.
 plate_bottom_round = 5.08;
 screw_hole_diameter = 5.969;
 counterbore_diameter = 11.2776;
 counterbore_depth = 4.953;
-// Small entry rounds are approximated by printable chamfers.
 entry_chamfer = 1.27;
 
 /* [Socket - measured fit] */
