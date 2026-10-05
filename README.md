@@ -22,6 +22,10 @@ Requires the `openscad` CLI on PATH.
 openscad -o projects/<name>/exports/<name>.stl projects/<name>/<name>.scad
 ```
 
+## Validating the sliding RC stands
+
+For repeatable checks of both sliding RC stand hubs, run `python3 scripts/validate_sliding_rc_stand.py`. See the [sliding stand validation instructions](projects/sliding-x-rc-plane-stand/README.md#repeatable-local-validation) for requirements, parameter cases and evidence output.
+
 ## Adding a shared library
 
 ```

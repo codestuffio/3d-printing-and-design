@@ -46,6 +46,38 @@ openscad -o projects/sliding-x-rc-plane-stand/exports/flush-sleeve-hub.stl proje
 
 Generated exports are gitignored. CAD checks do not establish print strength, aircraft fit or clamp holding force; physical testing is still required.
 
+## Repeatable local validation
+
+From the repository root, run:
+
+```sh
+python3 scripts/validate_sliding_rc_stand.py
+```
+
+Requires Python 3.9 or newer and OpenSCAD with ASCII STL export support. OpenSCAD 2021.01 is verified. The command finds `openscad` on PATH, then checks the standard macOS application locations. To select an executable explicitly:
+
+```sh
+python3 scripts/validate_sliding_rc_stand.py --openscad /Applications/OpenSCAD-2021.01.app/Contents/MacOS/OpenSCAD
+```
+
+The command exports both default hubs as ASCII STL and checks OpenSCAD's `Simple: yes`, one solid plus exterior volume, nonempty triangles, closed two-face edges, consistent winding and a connected mesh. For each variant it also evaluates CSG parameter cases: 500 mm assembly spacing accepted; 501 mm spacing rejected for insufficient pipe engagement; 120 mm spacing rejected for sleeve overlap; a 20 mm spine drop rejected for bore intersection; and an unknown selector rejected. CSG checks evaluate the model's assertions without fully rendering an assembly mesh.
+
+It exits zero only when all 12 cases pass. Missing OpenSCAD, export failures, warnings, unexpected assertions, missing output, malformed meshes and a 180-second timeout per case produce a nonzero exit. OpenSCAD can report assertion errors while exiting zero, so the command inspects diagnostics as well as the exit code.
+
+Exports, per-case logs, source SHA256 hashes and `summary.json` are retained in a fresh temporary directory whose path is printed. These are validation artifacts; the command does not replace existing exports or edit CAD. Run from a stable checkout and avoid editing the sources during validation; the command does not lock source files. To choose an evidence location, pass a directory that does not yet exist:
+
+```sh
+python3 scripts/validate_sliding_rc_stand.py --output-dir projects/sliding-x-rc-plane-stand/exports/validation-run
+```
+
+Remove or choose another output directory before rerunning that last command. Hub rendering can take several minutes. CAD checks still leave slicer supports, full-hub PVC/M4/M5 fit, clamp holding force, aircraft clearance and stability to physical validation.
+
+Validator failure-handling tests need only Python:
+
+```sh
+python3 -m unittest discover -s scripts -p 'test_validate*.py'
+```
+
 Verification: OpenSCAD 2021.01 exported the hub with `Simple: yes` and one solid plus the exterior volume. Assembly and print-orientation previews were rendered and visually inspected. The model asserts bore separation and full spine engagement for the chosen preview spacing. No physical print or locking-force test has been performed.
 
 ## Flush-sleeve alternative (requested revision)
