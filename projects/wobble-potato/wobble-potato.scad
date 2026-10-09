@@ -1,14 +1,15 @@
 // One rigid desktop rocker. Units: mm. Print on a broad face.
 belly_radius = 26;
-cap_height = 12;
-body_width = 22;
-edge_round = 0.8;
+cap_height = 20;
+cap_lump = 0.05;             // subtle shoulder/top variation; 0..0.05
+body_width = 34;
+edge_round = 9;
 face_depth = 0.8;
 face = "both";              // "none", "front" (top in print), "both"
 orientation = "print";      // "print" or "upright"
 contact_segments = 192;      // divisible by 4, includes bottom contact vertex
 
-// A circular lower half joins a half-ellipse at its widest points.
+// A circular lower half joins a fuller, gently uneven cap.
 // Cap width follows the belly diameter so the join stays tangent.
 cap_width = 2 * belly_radius;
 round_steps = 6;
@@ -16,7 +17,6 @@ detail_segments = 24;
 slice_thickness = 0.01;
 cut_overlap = 0.02;
 minimum_core = 2;
-ideal_centroid_y = 4 * (cap_height - belly_radius) / (3 * PI);
 half_steps = contact_segments / 2;
 profile_points = concat(
     [for (i = [0:half_steps])
@@ -24,30 +24,59 @@ profile_points = concat(
          belly_radius * sin(180 + i * 180 / half_steps)]],
     [for (i = [1:half_steps-1])
         [cap_width / 2 * cos(i * 180 / half_steps),
-         cap_height * sin(i * 180 / half_steps)]]);
+         cap_height * sin(i * 180 / half_steps)
+         * (1 + cap_lump * pow(sin(i * 180 / half_steps), 2)
+            * cos(4 * i * 180 / half_steps))]]);
+
+// Fuller oval shoulders expand the upper body while the central circle
+// remains the support surface within +/-15 degrees near upright.
+shoulder_x = belly_radius * 0.72;
+shoulder_rx = belly_radius * 0.75;
+shoulder_ry = cap_height * 0.83;
+shoulder_y = -belly_radius * 0.015;
+contact_angle = 15;
+shoulder_support = shoulder_x * sin(contact_angle)
+    + sqrt(pow(shoulder_rx * sin(contact_angle), 2)
+           + pow(shoulder_ry * cos(contact_angle), 2))
+    - shoulder_y * cos(contact_angle);
+// The polygon's inradius accounts for faceting between circular vertices.
+contact_support = belly_radius * cos(180 / contact_segments);
 
 // Face dimensions scale with the profile; cuts stay far from the belly arc.
 eye_spacing = belly_radius * 0.35;
-eye_length = belly_radius * 0.24;
+eye_radius = belly_radius * 0.08;
 eye_y = cap_height * 0.25;
 line_radius = belly_radius * 0.025;
 mouth_length = belly_radius * 0.32;
 mouth_y = -belly_radius * 0.16;
+mouth_sag = belly_radius * 0.04;
+mouth_steps = 12;
+dimple_radius = belly_radius * 0.035;
+// Sparse paired potato eyes on the skin, separate from the cartoon face.
+dimple_centers = [for (side = [-1, 1], p = [[0.48, 0.20], [0.45, -0.28], [0.18, -0.50]])
+    [side * belly_radius * p.x, belly_radius * p.y]];
+mouth_points = [for (i = [0:mouth_steps])
+    let(x = mouth_length * (i / mouth_steps - 0.5))
+    [x, mouth_y + mouth_sag * pow(2*x/mouth_length, 2)]];
 
-// The profile is convex and counterclockwise. Signed edge distances bound
-// the entire capsule, so a facial recess stays inside the rounded face.
+// The central profile is convex and counterclockwise. Keeping every recess
+// within its inset is a conservative bound for the larger shoulder hull.
 function profile_margin(p) = min([for (i = [0:len(profile_points)-1])
     let(a=profile_points[i], b=profile_points[(i+1)%len(profile_points)], e=b-a)
     (e.x * (p.y-a.y) - e.y * (p.x-a.x)) / norm(e)]);
-face_centers = concat(
-    [for (x = [-eye_spacing, eye_spacing], end = [-1, 1])
-        [x + end * eye_length/2, eye_y]],
-    [for (end = [-1, 1]) [end * mouth_length/2, mouth_y]]);
-face_margin = min([for (p = face_centers) profile_margin(p)]) - line_radius;
+face_margin = min(
+    min([for (x = [-eye_spacing, eye_spacing]) profile_margin([x, eye_y])]) - eye_radius,
+    min([for (p = mouth_points) profile_margin(p)]) - line_radius,
+    min([for (p = dimple_centers) profile_margin(p)]) - dimple_radius);
 
 assert(belly_radius > 0, "belly_radius must be positive");
 assert(cap_height > 0 && cap_height < belly_radius,
        "cap_height must be positive and below belly_radius (ideal low mass)");
+assert(cap_lump >= 0 && cap_lump <= 0.05, "cap_lump must be between 0 and 0.05");
+assert(cap_height * (1 + cap_lump) < belly_radius,
+       "cap_height and cap_lump must keep the top below belly_radius");
+assert(shoulder_support < contact_support,
+       "shoulders must preserve the circular contact arc through 15 degrees");
 assert(body_width > minimum_core, "body_width must exceed minimum_core");
 assert(edge_round >= 0 && edge_round < min(body_width / 2, cap_height / 2),
        "edge_round must leave the cap and width intact");
@@ -60,7 +89,13 @@ assert(face_depth > 0 && 2 * face_depth <= body_width - minimum_core,
 assert(face == "none" || face_margin > edge_round,
        "face clearance must exceed edge_round; reduce rounding or use no face");
 
-module profile() { polygon(profile_points); }
+module profile() {
+    hull() {
+        polygon(profile_points);
+        for (side = [-1, 1]) translate([side * shoulder_x, shoulder_y])
+            scale([shoulder_rx, shoulder_ry]) circle(1, $fn=contact_segments);
+    }
+}
 
 // Rounded broad-face edges, approximated by quarter-circle sections.
 // The central width keeps the original circular belly contact profile.
@@ -80,15 +115,15 @@ module body() {
     }
 }
 
-module stroke(length) {
-    hull() for (x = [-length/2, length/2])
-        translate([x, 0]) circle(line_radius, $fn=detail_segments);
-}
-
 module expression() {
     for (x = [-eye_spacing, eye_spacing])
-        translate([x, eye_y]) stroke(eye_length);
-    translate([0, mouth_y]) stroke(mouth_length);
+        translate([x, eye_y]) circle(eye_radius, $fn=detail_segments);
+    for (i = [0:mouth_steps-1]) hull() {
+        translate(mouth_points[i]) circle(line_radius, $fn=detail_segments);
+        translate(mouth_points[i+1]) circle(line_radius, $fn=detail_segments);
+    }
+    for (p = dimple_centers)
+        translate(p) scale([1, 0.7]) circle(dimple_radius, $fn=detail_segments);
 }
 
 module potato() {
@@ -103,7 +138,7 @@ module potato() {
     }
 }
 
-echo(ideal_uniform_unrounded_centroid_below_arc_center=-ideal_centroid_y);
+echo(circular_contact_angle_degrees=contact_angle);
 // In upright coordinates: X rocking, Y width, Z vertical; bottom Z = 0.
 if (orientation == "upright")
     translate([0, body_width/2, belly_radius]) rotate([90, 0, 0]) potato();
