@@ -1,6 +1,6 @@
 # Partial pot-rim soil shield
 
-Date: 2026-10-17. Category: gardening. Proposal only; separate user approval is required before CAD implementation.
+Date: 2026-10-17. Category: gardening. Selected and approved for CAD implementation by the user on 2026-10-20, starting with a nominal 6-inch pot. The other ideas formerly grouped in this PR were discarded. See the [editable prototype and validation guide](../../projects/partial-pot-rim-soil-shield/README.md) for the implementation and unmeasured example dimensions.
 
 ## Intended use and evidence
 
@@ -16,7 +16,7 @@ One continuous rigid partial arc with rounded exposed edges, a broad loose rim-r
 
 Use it only for the selected accessible rim sector. Remove it before final level inspection, settling and watering; preserve the plant's appropriate root-ball height and watering headroom. Reject the concept if it hides the fill level, requires raising the root ball, contacts foliage/stems/roots, catches the scoop or prevents normal finger access.
 
-## Parametric OpenSCAD approach if approved
+## Parametric OpenSCAD approach
 
 Create an original annular sector from a measured pot-rim radius, union a broad radial ledge and external rounded grip, and ease the exposed edges. Keep dimensions in millimeters with named parameters for rim radius/profile clearance, arc angle, wall height/thickness, ledge width/thickness, inward return reach/slope, grip length/width, edge radii and minimum connected section. Radius clearance is a locating allowance, not an interference fit. The required ledge contact must remain outside the plant/root-ball clearance envelope.
 
@@ -28,7 +28,7 @@ PLA is a candidate for a brief indoor fit coupon; PETG is a candidate for the ha
 
 Confirm an actual recurring filling task, plant-specific handling guidance, the current baseline and a useful improvement threshold. Measure the pot's local outer/inner rim radii, lip cross-section, taper, flexibility and condition; exposed arc, foliage/root-ball clearance, desired fill/headroom, spoon path, grip and removal access. Record mix particle/clump size and moisture, quantities transferred, tray arrangement, printer/nozzle/layers and measurement resolution. Thin nursery pots and glazed or fragile rims may make a rigid ledge unsuitable. No force, load or universal fit rating is proposed.
 
-## Acceptance and physical validation after approval
+## Acceptance and physical validation
 
 - Verify editable parameters, closed connected consistently wound nondegenerate positive-volume meshes, bounds and minimum sections; exercise valid boundaries and intended invalid assertions. Inspect actual rounded joins and ledge clearance, not just nominal overlap.
 - Inspect the slicer and print the contact coupon. Reject wobble, rim deformation, scratches, trapped grit or sharp/stringing contact edges. Then check the complete shield with an empty stable pot and inert root-ball surrogate before any living plant; verify grip, spoon path, full-arc access and removal. Keep an underlying catch tray.
@@ -36,4 +36,4 @@ Confirm an actual recurring filling task, plant-specific handling guidance, the 
 - Require the agreed reduction in combined handling waste to recur without worse total task time or incorrect fill/headroom. Reject every trial with pot slip, tipping, rim damage, plant-contact risk, blocked access, mix trapped beneath the ledge, uncontrolled dumping or tool breakage, even if the baseline also fails. A surrogate comparison does not establish live-plant suitability; a later ordinary repotting task needs its own observation.
 - Inspect wall/ledge/grip joins and contact surfaces after twenty gentle placement/removal/cleaning cycles. Record cleaning method and retained grit. Skip the design if cleaning or setup cancels its gain. No slicer, print, fit, surface, strength, wear, plant-health or usefulness evidence exists yet.
 
-This is a proposal for a measured bench task. It does not authorize CAD, replace horticultural guidance or establish physical readiness of any existing repository design.
+This brief defines a measured bench task. CAD implementation is approved; physical fit and usefulness remain unverified. It does not replace horticultural guidance or establish physical readiness of any repository design.
