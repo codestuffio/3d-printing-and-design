@@ -1,0 +1,339 @@
+{
+  "source_sha256": "24d68b4cf83d117ef50711bbfe1e0cb719c800ab3b214024d1852cc7c5f681fc",
+  "source_unchanged": true,
+  "cases": [
+    {
+      "name": "body",
+      "source": "desk-headphone-hook.scad",
+      "definitions": [
+        "part=\"body\""
+      ],
+      "expected_assertion": null,
+      "passed": true,
+      "exit_code": 0,
+      "triangles": 23696,
+      "bounds_mm": [
+        [
+          -77.9727,
+          -43.4727,
+          4.87691e-07
+        ],
+        [
+          43.9727,
+          9.97274,
+          39.9455
+        ]
+      ],
+      "bed_flat": true
+    },
+    {
+      "name": "screw",
+      "source": "desk-headphone-hook.scad",
+      "definitions": [
+        "part=\"screw\""
+      ],
+      "expected_assertion": null,
+      "passed": true,
+      "exit_code": 0,
+      "triangles": 6066,
+      "bounds_mm": [
+        [
+          -14.756,
+          -14.756,
+          0.0
+        ],
+        [
+          14.756,
+          14.756,
+          37.0
+        ]
+      ],
+      "bed_flat": true
+    },
+    {
+      "name": "shoe",
+      "source": "desk-headphone-hook.scad",
+      "definitions": [
+        "part=\"shoe\""
+      ],
+      "expected_assertion": null,
+      "passed": true,
+      "exit_code": 0,
+      "triangles": 1020,
+      "bounds_mm": [
+        [
+          -14.0,
+          -14.0,
+          0.0
+        ],
+        [
+          14.0,
+          14.0,
+          6.0
+        ]
+      ],
+      "bed_flat": true
+    },
+    {
+      "name": "thread_sample",
+      "source": "desk-headphone-hook.scad",
+      "definitions": [
+        "part=\"thread_sample\""
+      ],
+      "expected_assertion": null,
+      "passed": true,
+      "exit_code": 0,
+      "triangles": 3164,
+      "bounds_mm": [
+        [
+          -13.0,
+          -6.0,
+          0.0
+        ],
+        [
+          13.0,
+          6.0,
+          25.0
+        ]
+      ],
+      "bed_flat": true
+    },
+    {
+      "name": "screw_sample",
+      "source": "desk-headphone-hook.scad",
+      "definitions": [
+        "part=\"screw_sample\""
+      ],
+      "expected_assertion": null,
+      "passed": true,
+      "exit_code": 0,
+      "triangles": 4306,
+      "bounds_mm": [
+        [
+          -14.756,
+          -14.756,
+          0.0
+        ],
+        [
+          14.756,
+          14.756,
+          27.0
+        ]
+      ],
+      "bed_flat": true
+    },
+    {
+      "name": "body-thin",
+      "source": "desk-headphone-hook.scad",
+      "definitions": [
+        "part=\"body\"",
+        "desk_thickness=18",
+        "body_width=36",
+        "saddle_length=45"
+      ],
+      "expected_assertion": null,
+      "passed": true,
+      "exit_code": 0,
+      "triangles": 22792,
+      "bounds_mm": [
+        [
+          -66.9727,
+          -40.9727,
+          4.87691e-07
+        ],
+        [
+          43.9727,
+          9.97274,
+          35.9455
+        ]
+      ],
+      "bed_flat": true
+    },
+    {
+      "name": "body-large",
+      "source": "desk-headphone-hook.scad",
+      "definitions": [
+        "part=\"body\"",
+        "desk_thickness=30",
+        "body_width=50",
+        "saddle_length=65"
+      ],
+      "expected_assertion": null,
+      "passed": true,
+      "exit_code": 0,
+      "triangles": 22824,
+      "bounds_mm": [
+        [
+          -86.9727,
+          -51.9727,
+          4.87691e-07
+        ],
+        [
+          43.9727,
+          9.97274,
+          49.9455
+        ]
+      ],
+      "bed_flat": true
+    },
+    {
+      "name": "thread-tight",
+      "source": "desk-headphone-hook.scad",
+      "definitions": [
+        "part=\"thread_sample\"",
+        "thread_clearance=0.2",
+        "thread_axial_clearance=0.1"
+      ],
+      "expected_assertion": null,
+      "passed": true,
+      "exit_code": 0,
+      "triangles": 3072,
+      "bounds_mm": [
+        [
+          -13.0,
+          -6.0,
+          0.0
+        ],
+        [
+          13.0,
+          6.0,
+          25.0
+        ]
+      ],
+      "bed_flat": true
+    },
+    {
+      "name": "thread-loose",
+      "source": "desk-headphone-hook.scad",
+      "definitions": [
+        "part=\"thread_sample\"",
+        "thread_clearance=0.6",
+        "thread_axial_clearance=0.25"
+      ],
+      "expected_assertion": null,
+      "passed": true,
+      "exit_code": 0,
+      "triangles": 3242,
+      "bounds_mm": [
+        [
+          -13.0,
+          -6.0,
+          0.0
+        ],
+        [
+          13.0,
+          6.0,
+          25.0
+        ]
+      ],
+      "bed_flat": true
+    },
+    {
+      "name": "thin-rejected",
+      "source": "desk-headphone-hook.scad",
+      "definitions": [
+        "desk_thickness=17.9"
+      ],
+      "expected_assertion": "desk_thickness",
+      "passed": true,
+      "exit_code": 0
+    },
+    {
+      "name": "thick-rejected",
+      "source": "desk-headphone-hook.scad",
+      "definitions": [
+        "desk_thickness=30.1"
+      ],
+      "expected_assertion": "desk_thickness",
+      "passed": true,
+      "exit_code": 0
+    },
+    {
+      "name": "narrow-rejected",
+      "source": "desk-headphone-hook.scad",
+      "definitions": [
+        "body_width=35"
+      ],
+      "expected_assertion": "body_width",
+      "passed": true,
+      "exit_code": 0
+    },
+    {
+      "name": "long-rejected",
+      "source": "desk-headphone-hook.scad",
+      "definitions": [
+        "saddle_length=66"
+      ],
+      "expected_assertion": "saddle_length",
+      "passed": true,
+      "exit_code": 0
+    },
+    {
+      "name": "tight-rejected",
+      "source": "desk-headphone-hook.scad",
+      "definitions": [
+        "thread_clearance=0.19"
+      ],
+      "expected_assertion": "thread_clearance",
+      "passed": true,
+      "exit_code": 0
+    },
+    {
+      "name": "axial-rejected",
+      "source": "desk-headphone-hook.scad",
+      "definitions": [
+        "thread_axial_clearance=0.3"
+      ],
+      "expected_assertion": "thread_axial_clearance",
+      "passed": true,
+      "exit_code": 0
+    },
+    {
+      "name": "selector-rejected",
+      "source": "desk-headphone-hook.scad",
+      "definitions": [
+        "part=\"unknown\""
+      ],
+      "expected_assertion": "Unknown part selector",
+      "passed": true,
+      "exit_code": 0
+    },
+    {
+      "name": "collision-body-screw",
+      "passed": true,
+      "screw_retraction_mm": 0
+    },
+    {
+      "name": "collision-body-desk",
+      "passed": true,
+      "screw_retraction_mm": 0
+    },
+    {
+      "name": "collision-body-shoe",
+      "passed": true,
+      "screw_retraction_mm": 0
+    },
+    {
+      "name": "collision-screw-shoe",
+      "passed": true,
+      "screw_retraction_mm": 0.01
+    },
+    {
+      "name": "collision-cable-default",
+      "passed": true,
+      "screw_retraction_mm": 0
+    },
+    {
+      "name": "collision-cable-thin",
+      "passed": true,
+      "screw_retraction_mm": 0
+    },
+    {
+      "name": "collision-cable-large",
+      "passed": true,
+      "screw_retraction_mm": 0
+    }
+  ],
+  "passed": true,
+  "physical_fit_load_and_slicing_verified": false
+}

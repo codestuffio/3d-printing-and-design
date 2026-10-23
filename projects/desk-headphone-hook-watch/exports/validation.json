@@ -1,0 +1,153 @@
+{
+  "passed": true,
+  "cases": [
+    {
+      "name": "body",
+      "triangles": 28074,
+      "bounds_mm": [
+        [
+          -77.9727,
+          -43.4727,
+          4.8666e-07
+        ],
+        [
+          44.0,
+          72.7668,
+          39.9455
+        ]
+      ],
+      "passed": true
+    },
+    {
+      "name": "screw",
+      "triangles": 6066,
+      "bounds_mm": [
+        [
+          -14.756,
+          -14.756,
+          0.0
+        ],
+        [
+          14.756,
+          14.756,
+          37.0
+        ]
+      ],
+      "passed": true
+    },
+    {
+      "name": "shoe",
+      "triangles": 1020,
+      "bounds_mm": [
+        [
+          -14.0,
+          -14.0,
+          0.0
+        ],
+        [
+          14.0,
+          14.0,
+          6.0
+        ]
+      ],
+      "passed": true
+    },
+    {
+      "name": "watch-fit-sample",
+      "triangles": 3142,
+      "bounds_mm": [
+        [
+          -12.0,
+          32.95,
+          4.8666e-07
+        ],
+        [
+          42.5391,
+          72.7668,
+          39.9455
+        ]
+      ],
+      "passed": true
+    },
+    {
+      "name": "body-desk",
+      "passed": true
+    },
+    {
+      "name": "body-screw",
+      "passed": true
+    },
+    {
+      "name": "body-shoe",
+      "passed": true
+    },
+    {
+      "name": "fit-material-removed",
+      "passed": true
+    },
+    {
+      "name": "fit-material-added",
+      "passed": true
+    },
+    {
+      "name": "usb-jaw-port",
+      "passed": true
+    },
+    {
+      "name": "rear-cable",
+      "passed": true
+    },
+    {
+      "name": "headphone-cables",
+      "passed": true
+    },
+    {
+      "name": "thread_sample",
+      "triangles": 3164,
+      "bounds_mm": [
+        [
+          -13.0,
+          -6.0,
+          0.0
+        ],
+        [
+          13.0,
+          6.0,
+          25.0
+        ]
+      ],
+      "passed": true
+    },
+    {
+      "name": "screw_sample",
+      "triangles": 4306,
+      "bounds_mm": [
+        [
+          -14.756,
+          -14.756,
+          0.0
+        ],
+        [
+          14.756,
+          14.756,
+          27.0
+        ]
+      ],
+      "passed": true
+    }
+  ],
+  "sha256": {
+    "desk-headphone-hook-watch.scad": "84fd9b4b33e21a47dc7b7a612356bc087a334a6e03d467e3892e9f78db0c4dfe",
+    "geometry-checks.scad": "5b3eb2e65f0f6b57c4cb13fc07343d52c56607ff006c1394922e58e45bff7c27",
+    "reference/apple-watch-stand-big-usb.stl": "3a32866252b14b6c804fa3e21eb85263e3413d73b6281ad2b53d51e9d8dbe4e9",
+    "reference/headphone-hook-body.stl": "0324cfcce6fcda2d41b3bbe580e26f310e5a02b6a449b50b073b6dea1106764c",
+    "exports/body.stl": "874b0668ba2724bba917d6eaff17cd0636b444a1a45329c7b27a454f7ad74dc9",
+    "exports/screw.stl": "953dcf170ef3319c42f78a0f888971ae57eb082efd0057c8f9cadb57f9673799",
+    "exports/screw_sample.stl": "f2d21ef3611b0aaf8f8ba65dd80178d84721f386103aedff8cf068e538f09837",
+    "exports/shoe.stl": "a9479c4b34f77fa2ef164258736c4ef27e76c21362ed50f425fe531b206be5f8",
+    "exports/thread_sample.stl": "bf39fe52bff4896104644eaa0dd3504a184fef0f6b26558c38132506530bf590",
+    "exports/watch-fit-sample.stl": "441a4585516e7af0f9b22995b3f72b5657755ebd7725d884b2fff877ddc42328"
+  },
+  "physical_print_fit_load_and_slicing_verified": false,
+  "reference_and_reused_parts_match_originals": true
+}
