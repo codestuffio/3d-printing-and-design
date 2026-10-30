@@ -26,6 +26,10 @@ openscad -o projects/<name>/exports/<name>.stl projects/<name>/<name>.scad
 
 For repeatable checks of both sliding RC stand hubs, run `python3 scripts/validate_sliding_rc_stand.py`. See the [sliding stand validation instructions](projects/sliding-x-rc-plane-stand/README.md#repeatable-local-validation) for requirements, parameter cases and evidence output.
 
+## RC hardware cassette
+
+The [four-compartment RC hardware cassette](projects/rc-hardware-cassette/README.md) includes a tray, locating lid and matching fit coupons. Run `python3 projects/rc-hardware-cassette/validate.py` for local geometry checks. Dimensions are editable examples; print the coupons before testing actual hardware.
+
 ## Adding a shared library
 
 ```
