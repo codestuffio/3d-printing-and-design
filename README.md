@@ -30,6 +30,10 @@ For repeatable checks of both sliding RC stand hubs, run `python3 scripts/valida
 
 The [four-compartment RC hardware cassette](projects/rc-hardware-cassette/README.md) includes a tray, locating lid and matching fit coupons. Run `python3 projects/rc-hardware-cassette/validate.py` for local geometry checks. Dimensions are editable examples; print the coupons before testing actual hardware.
 
+## Clevis threading grip
+
+The [clevis threading grip](projects/clevis-threading-grip/README.md) includes a parametric open jaw, matching fit coupon and local validation command. Start with the coupon on a measured spare fitting.
+
 ## Adding a shared library
 
 ```
