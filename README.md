@@ -34,6 +34,10 @@ The [four-compartment RC hardware cassette](projects/rc-hardware-cassette/README
 
 The [clevis threading grip](projects/clevis-threading-grip/README.md) includes a parametric open jaw, matching fit coupon and local validation command. Start with the coupon on a measured spare fitting.
 
+## Three-pin sowing dibber
+
+The [three-pin sowing dibber](projects/three-pin-sowing-dibber/README.md) includes editable pitch/depth settings and a same-source one-pin media coupon. Run `python3 projects/three-pin-sowing-dibber/validate.py` for local geometry checks. Nominal tool penetration does not establish hole or seed burial depth.
+
 ## Adding a shared library
 
 ```
