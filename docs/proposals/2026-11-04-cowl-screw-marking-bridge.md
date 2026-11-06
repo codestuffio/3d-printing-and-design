@@ -1,0 +1,29 @@
+# Lift-off cowl screw marking bridge
+
+Proposed 2026-11-04 · RC airplane bench tool · CAD approval pending
+
+## The job
+
+On an unpowered RC model with an externally screwed slip-over cowl, fitting a blank replacement hides the existing side screw centers. A small removable bridge could carry one center from the bare mount to the fitted shell when a taped paper template repeatedly curls or shifts. Its job ends at a pencil or marker dot on removable tape.
+
+AJ Aircraft documents this transfer on the Laser 230z using tape left attached at one end. The instructions call for marking the shell in place, then removing it for drilling. That procedure establishes the job and gives a strong baseline. The Timber X 1.2 m named in this repo has screws accessed from inside the cowl and falls outside this brief. No compatible owner repair, frequency, or problem with the tape method is confirmed. [AJ Aircraft Laser 230z manual, pp. 22–23](https://www.aj-aircraft.com/assets/images/Downloads/Instruction%20Manuals/AJA_56_60_Laser%20230z_Instruction%20Manual_Rev%202.0.pdf#page=22), [E-flite Timber X 1.2 m manual, Motor Service](https://www.horizonhobby.com/on/demandware.static/-/Sites-horizon-master/default/dw7e8dcc48/Manuals/EFL3850-75-Manual-EN.pdf)
+
+## Smallest useful version
+
+Use one small tape-mounted base on a stable patch aft of the cowl overlap, and one stiff lift-off arm with an asymmetric key, seating stop and open-sided guide for a measured fine marker. With the cowl off, register the guide to one visible side hole whose screw axis is verified to be near normal to the cowl at the mark. Use the guided tip to center on the hole and a separate axis reference on the bare mount to check direction. The target is where the existing screw axis meets the seated shell. Put witness marks on the tape next to the base to reveal any shift. Lift the arm, fit and independently align the cowl per the model's instructions, then reseat the arm and mark on removable tape. Repeat for each compatible position. The arm stays outside the cowl and clears the shell throughout seating. Remove the guide and cowl before any drilling. Use only on a model whose instructions support that sequence.
+
+The height change between the mount and the outside of the cowl can turn a small guide angle into a displaced mark. A loose key, bending arm, tapered marker, rocking base, shifted shell or tape creep can do the same. Use light marking pressure and keep the guide clear of the shell. A thin metal hole duplicator is adjacent prior art for cases where a lower arm can reach under an overlap without disturbing it. Try the model's tape procedure first. An intact original cowl or a simple offset stick is another baseline if it registers to the same reference. Stop if a simpler method gives reliable marks. [Aircraft Spruce hole duplicator](https://www.aircraftspruce.com/catalog/topages/holeduplicators.php)
+
+## Parametric approach and inputs
+
+If approved, use rounded OpenSCAD extrusions in millimeters for the base and ribbed arm. Expose base footprint and contact contour, key width and fit allowance, stop position, reach, standoff, arm section, guide axis, marker shank diameter and the separation of two short guide lands on its cylindrical section. Model a same-source key-and-guide coupon to test seating and marker fit before printing the arm. Start with PLA for a room-temperature bench trial. PETG is a candidate if handling warrants it, with the fit checked again. Supplies are low-tack tape and one compatible fine marker.
+
+Measure the actual model and permitted cowl alignment procedure, hole center and intended marking axis, aft datum contour, cowl overlap and insertion path, outside shell height at the target, and reachable straight marker shank at both heights. Check whether the tape can hold without marking the finish on a representative scrap. Agree on a transfer tolerance from the actual screw, hole and mount edge margins before testing. Account for angular error over the measured change in depth, joint play and the uncertainty of the mark measurement. Reject a location if the base cannot seat without rocking or the guide cannot clear the shell.
+
+## Acceptance and physical evidence
+
+- **CAD** · Render the arm, base and coupon as closed meshes. Confirm the keyed joint reaches its stop, both marker lands remain open and coaxial, and the arm clears a measured shell envelope. Exercise realistic reach and height changes and reject impossible wall, fit and clearance inputs.
+- **Dry bench fit** · Inspect slicing and print the coupon first. On a curved scrap overlap with independent target marks at the bare mount and outer shell depths, verify marker reach, repeatable seating and clean release. Reject any base movement, cowl displacement, visible flex under light marking pressure, scoring or tape damage. A successful coupon checks interfaces only. Test the full arm for reach and deflection.
+- **Comparison** · Alternate at least five independent paired mock transfers against the model's tape or cardstock method and a simple offset stick if its datum is available. Reset the registration and apply fresh tape each trial. Record each dot's center error against the known target projected along the agreed axis, the worst error, missed marks, and total setup, marking and cleanup time. Record fitting and print time separately. Continue only if every mark stays within the agreed tolerance and the bridge reduces repeat errors or handling time enough for the actual repair frequency. After the mock comparison, dry-fit on a compatible unpowered airframe with a spare shell. Check that the cowl seats the same way before and after inserting the guide. Repeat the seat-and-lift cycle and inspect for looseness or marks.
+
+Slicing, print fit, joint wear, marking accuracy and time savings remain unverified. The proposed tests cover bench marking only.
